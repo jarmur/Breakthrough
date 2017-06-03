@@ -6,7 +6,8 @@ public class Game {
 	boolean gameOver;
 	private Board board;
 	
-	public Game(Player playerB, Player playerW) {
+	public Game(Board board, Player playerB, Player playerW) {
+		this.board = board;
 		this.playerB = playerB;
 		this.playerW = playerW;
 		this.unowned = null;

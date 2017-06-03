@@ -11,16 +11,6 @@ public class Board {
 			for(int j = 1; j <= 8; j++) {
 				board.add(new GameTile(new Cords(i, j), null));
 			}
-	}
-
-	@Override
-	public String toString() {
-		String tmp = "";
-		for(GameTile f: board){
-			tmp += f.getPawn() + " ";
-		}
-		return tmp;
-	}
-	
+	}	
 }
 
