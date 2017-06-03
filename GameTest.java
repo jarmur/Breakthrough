@@ -1,13 +1,14 @@
 package BreakthroughGame;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
+import java.awt.EventQueue;
 
 public class GameTest {
 	public static void main(String[] args) {
-		Board b = new Board();
-		System.out.println(b.toString());
-		int x = 0;
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new GameGUI();
+			}
+		});
 	}
 }
