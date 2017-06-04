@@ -28,6 +28,4 @@ public class GameTile {
 		this.cords = cords;
 		this.player = player;
 	}
-	
-	
 }
