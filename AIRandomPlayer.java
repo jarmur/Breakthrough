@@ -16,17 +16,22 @@ public class AIRandomPlayer extends Player{
 		Board b = super.getGame().getBoard();
 		ArrayList<PawnMove> possibleMoves = new ArrayList<>();
 		for(GameTile gtFrom: b.getTiles()) {
+			if(gtFrom.getPlayer() == null) continue;
 			if(gtFrom.getPlayer().equals(this)) {
 				ArrayList<GameTile> tiles;
 				if(gtFrom.getPlayer().getColor().equals("W")) tiles = b.getNeighbours(gtFrom, "W");
 				else tiles = b.getNeighbours(gtFrom, "B");
 				for(GameTile gtTo: tiles) {
-					possibleMoves.add(new PawnMove(gtFrom, gtTo));
+					if(!gtFrom.getPlayer().equals(gtTo.getPlayer())) possibleMoves.add(new PawnMove(gtFrom, gtTo));
 				}
 			}
 		}
 		while(!super.checkMove(m)) {
 			Random rng = new Random();
+			if(possibleMoves.size() == 0) {
+				super.getGame().setWinner((Player) super.getGame().getOpposingPlayer());
+				super.getGame().setGameOver(true);
+			}
 			m = possibleMoves.get(rng.nextInt(possibleMoves.size()));
 		}
 		return m;

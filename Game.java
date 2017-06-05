@@ -7,7 +7,6 @@ public class Game {
 		return currentPlayer;
 	}
 
-	private int playerBPawns, playerWPawns;
 	private boolean gameOver;
 	
 	public boolean isGameOver() {
@@ -22,11 +21,21 @@ public class Game {
 
 	public Game() {
 		this.winner = null;
-		this.playerBPawns = 16;
-		this.playerWPawns = 16;
 		this.gameOver = false;
 	}
 	
+	public Player getWinner() {
+		return winner;
+	}
+
+	public void setWinner(Player winner) {
+		this.winner = winner;
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
+	}
+
 	public void addPlayers(Player pw, Player pb) {
 		this.board = new Board(pw, pb);
 		this.currentPlayer = pw;
@@ -36,5 +45,11 @@ public class Game {
 
 	public Object getOpposingPlayer() {
 		return (playerW.equals(currentPlayer)) ? playerB : playerW;
+	}
+
+	public void changeCurrentPlayer() {
+		if(currentPlayer.equals(playerW)) currentPlayer = playerB;
+		else currentPlayer = playerW;
+		
 	}
 }

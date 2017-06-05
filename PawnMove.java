@@ -15,4 +15,9 @@ public class PawnMove {
 	public Cords getTo() {
 		return to;
 	}
+
+	@Override
+	public String toString() {
+		return "(" + from.getX() + ", " + from.getY() + ")=>(" + to.getX() + ", " + to.getY() + ")";
+	}
 }
